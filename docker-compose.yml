@@ -1,0 +1,52 @@
+version: '3.7'
+services:
+    agenda_angular:
+        build: Agenda
+        ports: 
+            - "4200:4200"
+        # networks: 
+        #     - net
+
+    auth:
+        build: NodeJS
+        ports: 
+            - "3000:3000"
+        # networks:
+        #     - net
+        depends_on:
+            - db
+
+    db:
+        image: mysql:5.7
+        volumes:
+            - ./mysql:/var/lib/mysql
+        ports:
+            - "3306:3306"
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+            
+    myadmin:
+        image: phpmyadmin/phpmyadmin
+        ports:
+            - "8080:80"
+        links:
+            - db:db
+
+    # bdd_auth:
+    #     image: mysql:5.7
+    #     volumes: 
+    #         - ./bdd_auth:/var/lib/mysql
+    #     ports: 
+    #         - "3306:3306" 
+    #     environment:
+    #         - MYSQL_ROOT_PASSWORD=root
+
+    # myadmin:
+    #     image: phpmyadmin/phpmyadmin
+    #     ports:
+    #         - "8080:80"
+    #     links:
+    #         - bdd_auth:bdd_auth
+# networks:
+#     net:
+#         driver: bridge
