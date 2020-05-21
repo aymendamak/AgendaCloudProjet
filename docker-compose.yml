@@ -4,20 +4,22 @@ services:
         build: Agenda
         ports: 
             - "4200:4200"
-        # networks: 
-        #     - net
+        networks: 
+            - net
 
     auth:
         build: NodeJS
         ports: 
             - "3000:3000"
-        # networks:
-        #     - net
+        networks:
+            - net
         depends_on:
             - db
 
     db:
         image: mysql:5.7
+        networks: 
+            - net
         volumes:
             - ./mysql:/var/lib/mysql
         ports:
@@ -29,8 +31,9 @@ services:
         image: phpmyadmin/phpmyadmin
         ports:
             - "8080:80"
-        links:
-            - db:db
+        networks: 
+            - net
+
 
     # bdd_auth:
     #     image: mysql:5.7
@@ -47,6 +50,9 @@ services:
     #         - "8080:80"
     #     links:
     #         - bdd_auth:bdd_auth
-# networks:
-#     net:
-#         driver: bridge
+networks:
+    net:
+        driver: bridge
+
+
+        
