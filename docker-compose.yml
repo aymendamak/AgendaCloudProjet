@@ -1,21 +1,22 @@
 version: '3.7'
 services:
     agenda_angular:
-        build: Agenda
+        image: wvm-srv6.luminy.univ-amu.fr/polytechprojet/agenda:0.0.5
         ports:
             - "4200:4200"
         networks:
             - net
 
     auth:
-        build: NodeJS
+        image: wvm-srv6.luminy.univ-amu.fr/polytechprojet/node:0.0.1
         ports:
             - "3000:3000"
         networks:
             - net
-        restart: on-failure
         depends_on:
             - db
+        environment: 
+            - MYSQL_HOST=db
 
     db:
         image: mysql:5.7

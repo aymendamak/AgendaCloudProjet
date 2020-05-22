@@ -1,14 +1,15 @@
 {
   "name": "agenda",
-  "version": "0.0.0",
+  "version": "0.0.5",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --host 0.0.0.0",
+    "start": "ng serve --host 0.0.0.0 --disable-host-check --prod",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "heroku-postbuild": "ng build --prod"
+    "heroku-postbuild": "ng build --prod",
+    "postinstall": "ngcc"
   },
   "private": true,
   "dependencies": {

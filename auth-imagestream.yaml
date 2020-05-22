@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ImageStream
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: auth
+  name: auth
+  annotations:
+    openshift.io/image.insecureRepository: "true"
+ 
+spec:
+  tags:
+  - annotations: null
+    from:
+      kind: DockerImage
+      name: wvm-srv6.luminy.univ-amu.fr/polytechprojet/node:0.0.1
+    generation: null
+    importPolicy: 
+      insecure: true
+    name: 0.0.1
+status:
+  dockerImageRepository: ""

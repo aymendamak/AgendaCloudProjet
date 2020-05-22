@@ -13,6 +13,8 @@ COPY package*.json /app/
 # Install dependecies
 RUN npm install
 
+RUN npm run postinstall
+
 # Get all the code needed to run the app
 COPY . /app/
 

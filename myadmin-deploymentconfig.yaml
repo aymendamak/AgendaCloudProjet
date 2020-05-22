@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: DeploymentConfig
+metadata:
+  annotations:
+    kompose.cmd: ./kompose --provider openshift --file docker-compose.yml convert
+    kompose.version: 1.19.0 (f63a961c)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: myadmin
+  name: myadmin
+spec:
+  replicas: 1
+  selector:
+    io.kompose.service: myadmin
+  strategy:
+    resources: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: myadmin
+    spec:
+      containers:
+      - image: ' '
+        name: myadmin
+        ports:
+        - containerPort: 80
+        resources: {}
+      restartPolicy: Always
+  test: false
+  triggers:
+  - type: ConfigChange
+  - imageChangeParams:
+      automatic: true
+      containerNames:
+      - myadmin
+      from:
+        kind: ImageStreamTag
+        name: myadmin:latest
+    type: ImageChange
+status: {}
