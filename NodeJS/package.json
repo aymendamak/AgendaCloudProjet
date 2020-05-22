@@ -4,7 +4,10 @@
     "description": "",
     "main": "app.js",
     "scripts": {
+<<<<<<< Updated upstream
         "test": "echo \"Error: no test specified\" && exit 1",
+=======
+>>>>>>> Stashed changes
         "start": "node app.js"
     },
     "author": "",
