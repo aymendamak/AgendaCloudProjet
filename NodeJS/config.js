@@ -1,7 +1,7 @@
 const config = {
     // paramètres de connexion à la base de données
-    mysqlHost: '127.0.0.1',
-    mysqlPort: '8889',
+    mysqlHost: 'db',
+    //mysqlPort: '8889',
     mysqlDatabase: 'cloudcomputing',
     charset: 'utf8',
     mysqlLogin: 'root',

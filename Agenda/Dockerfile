@@ -1,7 +1,3 @@
-<<<<<<< Updated upstream
-## creation du dossier dist qui contient le projet 
-FROM node:latest as node     
-=======
 # Create image based on the official Node 10 image from dockerhub
 FROM node:latest
 
@@ -9,18 +5,19 @@ FROM node:latest
 RUN mkdir -p /app
 
 # Change directory so that our commands run inside this new directory
->>>>>>> Stashed changes
 WORKDIR /app
-COPY . .
+
+# Copy dependency definitions
+COPY package*.json /app/
+
+# Install dependecies
 RUN npm install
-RUN npm run build --prod
 
-## run application
-FROM nginx:alpine
-COPY --from=node /app/dist/angular-app /usr/share/nginx/html
+# Get all the code needed to run the app
+COPY . /app/
 
-<<<<<<< Updated upstream
-=======
+# Expose the port the app runs in
+EXPOSE 4200
+
 # Serve the app
 CMD ["npm", "start"]
->>>>>>> Stashed changes
