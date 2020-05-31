@@ -1,20 +1,35 @@
 version: '3.7'
 services:
     agenda_angular:
+<<<<<<< Updated upstream
         build: Agenda
         ports: 
+=======
+        image: wvm-srv6.luminy.univ-amu.fr/polytechprojet/agenda:0.2.0
+        ports:
+>>>>>>> Stashed changes
             - "4200:4200"
         networks: 
             - net
 
     auth:
+<<<<<<< Updated upstream
         build: NodeJS
         ports: 
+=======
+        image: wvm-srv6.luminy.univ-amu.fr/polytechprojet/node:0.1.2
+        ports:
+>>>>>>> Stashed changes
             - "3000:3000"
         networks:
             - net
         depends_on:
             - db
+<<<<<<< Updated upstream
+=======
+        environment:
+            - MYSQL_HOST=db
+>>>>>>> Stashed changes
 
     db:
         image: mysql:5.7
@@ -28,12 +43,20 @@ services:
             - MYSQL_ROOT_PASSWORD=root
             
     myadmin:
-        image: phpmyadmin/phpmyadmin
+        image: wvm-srv6.luminy.univ-amu.fr/polytechprojet/phpmyadmin:0.1.0
         ports:
+<<<<<<< Updated upstream
             - "8080:80"
         networks: 
+=======
+            - "8080:4000"
+        networks:
+>>>>>>> Stashed changes
             - net
+        volumes:
+            - ./phpmyadmin:/root
 
+<<<<<<< Updated upstream
 
     # bdd_auth:
     #     image: mysql:5.7
@@ -50,6 +73,8 @@ services:
     #         - "8080:80"
     #     links:
     #         - bdd_auth:bdd_auth
+=======
+>>>>>>> Stashed changes
 networks:
     net:
         driver: bridge

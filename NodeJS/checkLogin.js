@@ -4,6 +4,7 @@ const { sendError, sendMessage } = require("./message");
 
 const auth = require('./auth');
 
+
 async function checkLogin(req, res) {
     if (typeof req.body.username === 'undefined')
         return sendError(res, 'Vous n\'avez pas envoyé la donnée username');

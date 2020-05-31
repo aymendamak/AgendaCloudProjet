@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 
 // permet d'éviter le problème de CORS que l'on avait déjà vu
 const cors = require('cors');
-app.use(cors({ origin: 'http://localhost:4200', credentials: true }));
+app.use(cors({ origin: 'http://agendaangular-agenda-cloud-computing.cloudapps.luminy.univ-amu.fr', credentials: true }));
 
 
 const cookieParser = require('cookie-parser');

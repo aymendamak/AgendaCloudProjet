@@ -24,7 +24,7 @@ export class SaveRDVService {
       'password' : password
     }    
 
-    return this.http.post<PhpData>( 'http://127.0.0.1:3000/saveRDV', data, { withCredentials: true } );
+    return this.http.post<PhpData>( 'http://node-agenda-cloud-computing.cloudapps.luminy.univ-amu.fr/saveRDV', data, { withCredentials: true } );
 
   }
 

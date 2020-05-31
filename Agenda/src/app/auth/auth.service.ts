@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http'
 import { PhpData } from '../php-data';
+import { HttpHeaders, HttpClientModule } from '@angular/common/http';
 
 
 @Injectable({
@@ -13,9 +14,7 @@ export class AuthService {
   isLoggedIn : boolean = false;
   redirectUrl : string = "";
   
-
   constructor( private http : HttpClient ) {  }
-
 
   
   sendAuthentication( username : string, password : string )  : Observable<PhpData> {
@@ -36,11 +35,10 @@ export class AuthService {
     // request.open("POST", "http://forum/angular/checkLogin.php");
     // request.send(formData);
     
-    return this.http.post<PhpData>( 'http://127.0.0.1:3000/checkLogin', data, { withCredentials: true } );
+    return this.http.post<PhpData>( 'http://node-agenda-cloud-computing.cloudapps.luminy.univ-amu.fr/checkLogin', data , { withCredentials: true } );
 
   }
 
-    
     
   finalizeAuthentication(reponse : PhpData){
 

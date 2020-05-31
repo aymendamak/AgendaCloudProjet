@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: DeploymentConfig
+metadata:
+  annotations:
+    kompose.cmd: kompose-windows-amd64.exe --provider openshift --file docker-compose.yml
+      convert
+    kompose.version: 1.19.0 (f63a961c)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: agenda-angular
+  name: agenda-angular
+spec:
+  replicas: 1
+  selector:
+    io.kompose.service: agenda-angular
+  strategy:
+    resources: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: agenda-angular
+    spec:
+      containers:
+      - image: ' '
+        name: agenda-angular
+        ports:
+        - containerPort: 4200
+        resources: {}
+      restartPolicy: Always
+  test: false
+  triggers:
+  - type: ConfigChange
+  - imageChangeParams:
+      automatic: true
+      containerNames:
+      - agenda-angular
+      from:
+        kind: ImageStreamTag
+        name: agenda-angular:0.2.0
+    type: ImageChange
+status: {}
