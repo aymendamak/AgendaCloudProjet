@@ -1,14 +1,16 @@
 version: '3.7'
 services:
     agenda_angular:
-        image: wvm-srv6.luminy.univ-amu.fr/polytechprojet/agenda:0.0.5
+        #image: wvm-srv6.luminy.univ-amu.fr/polytechprojet/agenda:0.0.5
+        build: Agenda
         ports:
             - "4200:4200"
         networks:
             - net
 
     auth:
-        image: wvm-srv6.luminy.univ-amu.fr/polytechprojet/node:0.0.1
+        #image: wvm-srv6.luminy.univ-amu.fr/polytechprojet/node:0.0.1
+        build: NodeJS
         ports:
             - "3000:3000"
         networks:

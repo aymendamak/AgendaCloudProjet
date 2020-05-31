@@ -9,6 +9,8 @@ import { AgendaComponent } from './agenda/agenda.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { Routes, RouterModule } from '@angular/router';
+
 
 @NgModule({
   declarations: [

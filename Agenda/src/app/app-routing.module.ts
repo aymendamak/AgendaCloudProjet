@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: '',
   canActivateChild : [ AuthGuard ],
   children: [
-    { path: 'agenda', component: AgendaComponent },
+    { path: 'agenda', component: AgendaComponent }
   ]
 }
 ];
